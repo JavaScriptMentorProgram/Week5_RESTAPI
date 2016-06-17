@@ -23,7 +23,7 @@ router.get('/image/:id', (req, res) => {
 
 router.post('/', (req, res) =>{
   let image = {};
-  image.id = photos.length;
+  image.id = String(Number(photos[photos.length-1].id) + 1);
   image.name = req.body.name;
   image.url = req.body.url;
   photos.push(image);
