@@ -38,16 +38,24 @@ router.put('/image/:id', (req, res) => {
       image.url = req.body.url;
     }
   });
-  console.log(photos);
   res.send(photos);
 });
 
-router.delete('/', (req, res) => {
+/*router.delete('/', (req, res) => {
+  photos = {};
+  res.send(photos);
+});*/
 
-});
-
-router.delete('/image/:imageName', (req, res) => {
-
+router.delete('/image/:id', (req, res) => {
+  let id = req.params.id;
+  console.log(id);
+  for(let i = 0; i < photos.length; i++){
+    if(photos[i].id === id){
+      console.log(photos[i].id);
+      photos.splice(i, 1);
+    }
+  }
+  res.send(photos);
 });
 
 module.exports = router;
