@@ -31,7 +31,15 @@ router.post('/', (req, res) =>{
 });
 
 router.put('/image/:id', (req, res) => {
-
+  let id = req.params.id;
+  photos.forEach((image)=>{
+    if(image.id === id){
+      image.name = req.body.name;
+      image.url = req.body.url;
+    }
+  });
+  console.log(photos);
+  res.send(photos);
 });
 
 router.delete('/', (req, res) => {
